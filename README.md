@@ -15,10 +15,16 @@ This template requires:
 ### Quick Setup
 
 1. Clone this repository
-2. Rename the following components to match your project name:
-   - The `you_app_srcs` module
-   - Project name in `pyproject.toml`
-   - `__name__` in `__init__.py`
+2. Run the setup script to customize the template for your project:
+   ```bash
+   ./project_setup.py "Your Project Name"
+   ```
+   This script will:
+   - Rename the `you_app_srcs` directory to your project name (in snake_case)
+   - Update project name in `pyproject.toml`
+   - Update package references in all necessary files
+   - Update module name in `__init__.py`
+
 3. Install dependencies:
    ```bash
    just init-venv
@@ -33,7 +39,8 @@ This template requires:
 .
 ├── pyproject.toml         # Project configuration and dependencies
 ├── justfile               # Command runner tasks
-├── you_app_srcs/          # Main source directory (rename this!)
+├── project_setup.py       # Project customization script
+├── you_app_srcs/          # Main source directory (will be renamed by setup script)
 │   ├── __init__.py        # Package initialization
 │   └── ...                # Your modules go here
 └── CHANGELOG.md           # Documentation of changes
@@ -50,9 +57,17 @@ This template uses `just` for command running:
 
 ## 🔄 Customization
 
-Feel free to ask the agent to rename files to match your application name. For example:
+The template includes a customization script for easy project setup:
 
-> "Please rename the you_app_srcs directory and references to my-awesome-app"
+```bash
+# Example: Set up a project called "Weather Service"
+./project_setup.py "Weather Service"
+```
+
+This will:
+- Rename the package directory to `weather_service`
+- Update project name to "WEATHER-SERVICE" in pyproject.toml
+- Update all internal references to use the new package name
 
 ## 📝 Development Guidelines
 

@@ -21,6 +21,11 @@ alwaysApply: true
   just update-deps
   just install-deps
   ```
+- **Run scripts using @uv:**
+    ```bash
+    uv run python script.py
+    ```
+- Do not run scripts directly with `python script.py` or other methods.
 
 ## Type Annotations
 
@@ -28,15 +33,25 @@ alwaysApply: true
 - Type annotations will be checked by mypy
 - If you're unsure about the correct type, use `Any` from `typing` module
 - Let the user add type ignores if necessary
+- **Do not use abstract or largtypes** (`Set`, `Tuple`, `Sequence`, etc.).
+    - Use only the basic types:  
+    - Example:
+        ```python
+        # correct
+        def process_items(items: list) -> dict:
+            ...
+
+        # incorrect
+        def process_items(items: Sequence[Any]) -> Mapping:
+            ...
+        ```
 
 ## Documentation
 
-- Write comprehensive docstrings for all modules, classes, functions, and methods
 - Follow documentation format conventions (Google style or similar)
-- Document your changes in `CHANGELOG.md`, explaining:
-  - What was changed
-  - Why it was changed
-  - How it affects existing functionality
+- **Document only complex functions, classes, and methods,**
+  - and those whose names do not clearly describe what they do.
+- Do not add docstrings to simple functions if their purpose is obvious from the name.
 
 ## Logging
 
@@ -54,6 +69,8 @@ alwaysApply: true
       logger.exception("Error occurred while processing data")
       raise
   ```
+- **Do not configure logging manually.**
+  - Use the default configuration or the one provided by the project infrastructure.
 
 ## File System Operations
 
@@ -74,3 +91,10 @@ alwaysApply: true
 - Keep functions small and focused on a single responsibility
 - Use pure functions that don't modify state and produce consistent outputs for the same inputs
 - Minimize class usage - use them only when truly necessary, always prefer composition over inheritance
+- **Do not use relative imports.**
+  - Always import using the absolute path from the project root.
+
+## Code Changes
+
+- **Do not change code unless explicitly asked to do so.**
+  - Follow the principle of minimal intervention.
