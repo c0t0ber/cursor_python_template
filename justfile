@@ -19,9 +19,9 @@ lint:
 
 update-deps:
     uv pip compile --no-header --upgrade pyproject.toml -o requirements.txt
-
-install-deps:
     uv pip install -r requirements.txt
+   
 
 run-app:
     uv run python -m you_app_srcs
+

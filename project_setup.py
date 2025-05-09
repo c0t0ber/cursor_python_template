@@ -24,7 +24,7 @@ def setup_project(project_name: str) -> None:
     package_name = project_name.lower().replace(" ", "_").replace("-", "_")
     
     # Convert to uppercase with dashes for project name in pyproject.toml
-    project_name_toml = project_name.upper().replace(" ", "-")
+    project_name_toml = project_name.lower().replace(" ", "-")
     
     # Define paths
     root_dir = Path(__file__).parent

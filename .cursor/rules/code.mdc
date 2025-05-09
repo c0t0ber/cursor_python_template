@@ -9,23 +9,17 @@ alwaysApply: true
 
 - Review the [pyproject.toml](mdc:pyproject.toml) to identify Python version requirements and dependencies
 - Use the latest Python features without concern for backward compatibility
-- Use UV exclusively for dependency management
-- Use [justfile](mdc:justfile) for easy command management
-- After code changes, always run:
-  ```bash
-  just fmt
-  just lint
-  ```
-- When modifying dependencies:
+- Use [justfile](mdc:justfile) for easy command management and dependency management
+- If you need new dependency add it to [pyproject.toml](mdc:pyproject.toml)
+- After modifying dependencies always use:
   ```bash
   just update-deps
-  just install-deps
   ```
 - **Run scripts using @uv:**
     ```bash
     uv run python script.py
     ```
-- Do not run scripts directly with `python script.py` or other methods.
+  - Do not run scripts directly with `python script.py` or other methods.
 
 ## Type Annotations
 
@@ -51,7 +45,7 @@ alwaysApply: true
 - Follow documentation format conventions (Google style or similar)
 - **Document only complex functions, classes, and methods,**
   - and those whose names do not clearly describe what they do.
-- Do not add docstrings to simple functions if their purpose is obvious from the name.
+- Do not add docstrings to simple functions or lines of code.
 
 ## Logging
 
@@ -98,3 +92,8 @@ alwaysApply: true
 
 - **Do not change code unless explicitly asked to do so.**
   - Follow the principle of minimal intervention.
+- After code changes, always run:
+  ```bash
+  just fmt
+  just lint
+  ```

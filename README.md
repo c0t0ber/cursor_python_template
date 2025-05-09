@@ -29,7 +29,6 @@ This template requires:
    ```bash
    just init-venv
    just update-deps
-   just install-deps
    ```
 4. Start developing!
 
@@ -53,7 +52,6 @@ This template uses `just` for command running:
 - `just fmt` - Format code
 - `just lint` - Lint code
 - `just update-deps` - Update dependencies
-- `just install-deps` - Install dependencies
 
 ## 🔄 Customization
 
